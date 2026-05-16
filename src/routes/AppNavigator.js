@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -8,8 +8,9 @@ import RegisterScreen from '../screens/RegisterScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Register">
 
         <Stack.Screen 
           name="Login" 
@@ -25,7 +26,7 @@ const AppNavigator = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
-
+  );
 };
 
 export default AppNavigator;
