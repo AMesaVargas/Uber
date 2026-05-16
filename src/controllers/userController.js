@@ -1,7 +1,7 @@
 import { validateProfileForm } from '../services/userService';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { useCallback } from 'react';
-import { useUser } from '../context/UserContext';
+import { useUser } from '../context/userContext';
 
 export const useUserController = () => {
 

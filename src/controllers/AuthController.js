@@ -1,7 +1,7 @@
-import { validateRegisterForm, validateLoginForm } from '../services/AuthServices';
+import { validateRegisterForm, validateLoginForm } from '../services/authServices';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { useCallback } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/authContext';
 
 export const useAuthController = () => {
 const { login, logout } = useAuth();

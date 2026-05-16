@@ -1,7 +1,7 @@
 import React from 'react';
-import AppNavigator from './src/routes/AppNavigator';
-import { AuthProvider } from './src/context/AuthContext';
-import { UserProvider } from './src/context/UserContext';
+import AppNavigator from './src/routes/appNavigator';
+import { AuthProvider } from './src/context/authContext';
+import { UserProvider } from './src/context/userContext';
 
 const App = () => {
   return (
