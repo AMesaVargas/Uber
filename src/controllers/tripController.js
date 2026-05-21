@@ -1,60 +1,60 @@
-import { validateTripForm, calculateFare, getVehicleCategories } from '../services/tripService';
-import { authMiddleware } from '../middlewares/authMiddleware';
-import { useCallback, useState } from 'react';
+  import { validateTripForm, calculateFare, getVehicleCategories } from '../services/tripService';
+  import { authMiddleware } from '../middlewares/authMiddleware';
+  import { useCallback, useState } from 'react';
 
-export const useTripController = () => {
+  export const useTripController = () => {
 
-  const [currentTrip, setCurrentTrip] = useState(null);
+    const [currentTrip, setCurrentTrip] = useState(null);
 
-  const [fare, setFare] = useState(null);
+    const [fare, setFare] = useState(null);
 
 
-  const requestTripController = useCallback((formData) => {
+    const requestTripController = useCallback((formData) => {
 
-    const middleware = authMiddleware(formData);
-    if (!middleware.passed) {
-      return { success: false, message: middleware.error };
-    }
+      const middleware = authMiddleware(formData);
+      if (!middleware.passed) {
+        return { success: false, message: middleware.error };
+      }
 
-    const validation = validateTripForm(formData);
-    if (!validation.isValid) {
-      return { success: false, message: validation.error };
-    }
+      const validation = validateTripForm(formData);
+      if (!validation.isValid) {
+        return { success: false, message: validation.error };
+      }
 
-    setCurrentTrip(formData);
-    console.log('Trip requested:', formData);
+      setCurrentTrip(formData);
+      console.log('Trip requested:', formData);
 
-    return { success: true, message: 'Trip requested successfully' };
+      return { success: true, message: 'Trip requested successfully' };
 
-  }, []);
+    }, []);
 
-  const calculateFareController = useCallback((vehicleCategory, distanceKm) => {
+    const calculateFareController = useCallback((vehicleCategory, distanceKm) => {
 
-    const result = calculateFare(vehicleCategory, distanceKm);
+      const result = calculateFare(vehicleCategory, distanceKm);
 
-    if (!result.success) {
-      return { success: false, message: result.error };
-    }
+      if (!result.success) {
+        return { success: false, message: result.error };
+      }
 
-    setFare(result.fare);
-    console.log('Fare calculated:', result);
+      setFare(result.fare);
+      console.log('Fare calculated:', result);
 
-    return { success: true, fare: result.fare, vehicleName: result.vehicleName };
+      return { success: true, fare: result.fare, vehicleName: result.vehicleName };
 
-  }, []);
+    }, []);
 
-  const getVehicleCategoriesController = useCallback(() => {
-    const categories = getVehicleCategories();
-    console.log('Vehicle categories:', categories);
-    return categories;
-  }, []);
+    const getVehicleCategoriesController = useCallback(() => {
+      const categories = getVehicleCategories();
+      console.log('Vehicle categories:', categories);
+      return categories;
+    }, []);
 
-  return {
-    currentTrip,
-    fare,
-    requestTripController,
-    calculateFareController,
-    getVehicleCategoriesController,
+    return {
+      currentTrip,
+      fare,
+      requestTripController,
+      calculateFareController,
+      getVehicleCategoriesController,
+    };
+
   };
-
-};

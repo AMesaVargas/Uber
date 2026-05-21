@@ -1,5 +1,5 @@
 export const validateTripHistory = (trips) => {
-    if (!trips | trips.length === 0){
+    if (!trips || trips.length === 0){
         return {isValid: false, error: 'No trips found'};
     }
 
