@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import AppNavigator from './src/routes/AppNavigator';
 import { AuthProvider } from './src/context/AuthContext';
-import { UserProvider } from './src/context/UserContext';
+import { UserProvider } from './src/context/userContext';
 
 const App = () => {
   return (

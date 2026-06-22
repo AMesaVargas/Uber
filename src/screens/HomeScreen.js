@@ -107,6 +107,7 @@ const HomeScreen = () => {
       const url = `https://router.project-osrm.org/route/v1/driving/${start.longitude},${start.latitude};${end.longitude},${end.latitude}?overview=full&geometries=geojson`;
       const response = await fetch(url);
       const data = await response.json();
+      console.log('ROUTE DATA:', data);
 
       if (!data.routes || data.routes.length === 0) {
         Alert.alert('Error', 'No route found');

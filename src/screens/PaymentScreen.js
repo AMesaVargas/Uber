@@ -184,13 +184,13 @@ const PaymentScreen = ({ tripData, onPaymentDone, onBack }) => {
     if (selectedMethod === 'mercadopago' && result.urlPago) {
       const canOpen = await Linking.canOpenURL(result.urlPago);
 
-      if (canOpen) {
-        await Linking.openURL(result.urlPago);
-        setWaitingReturn(true);
-      } else {
-        Alert.alert('Error', 'Could not open Mercado Pago');
+     try {
+      await Linking.openURL(result.urlPago);
+      setWaitingReturn(true);
+      } catch (error) {
+      console.log('OPEN URL ERROR:', error);
+       Alert.alert('Error', 'Could not open Mercado Pago');
       }
-
       return;
     }
 
